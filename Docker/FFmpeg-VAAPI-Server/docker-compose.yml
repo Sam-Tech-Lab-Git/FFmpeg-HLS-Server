@@ -1,0 +1,35 @@
+services:
+  ffmpeg-vaapi-server:
+    image: samtechrepo/ffmpeg-vaapi:8.0.1-nodejs-noble
+    container_name: ffmpeg-vaapi-server
+    hostname: ffmpeg-vaapi-server
+    group_add:
+      - '992' # getent group render
+      - '44'  # getent group video
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+      - seccomp=unconfined
+    networks:
+      - Local
+      - Streaming
+    dns:
+      - 172.18.255.254
+    ports:
+      - "8081:8080"
+    tmpfs:
+      - /app/streams:rw,size=4g
+    environment:
+      TZ: "Europe/Paris"
+      LIBVA_DRIVER_NAME: "radeonsi"
+    volumes:
+      - ./volumes/playlists:/app/playlists
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
+
+networks:
+  Local:
+    external: true
+  Streaming:
+    external: true
