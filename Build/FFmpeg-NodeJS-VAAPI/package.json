@@ -1,0 +1,18 @@
+{
+  "name": "ffmpeg-vaapi-server",
+  "version": "8.0.1",
+  "description": "FFmpeg server for HLS streaming",
+  "main": "ffmpeg-vaapi-server.js",
+  "scripts": {
+    "start": "node ffmpeg-vaapi-server.js"
+  },
+  "author": "SamTechDevOps",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sam-Dz-Devops/FFmpeg-HLS-Server.git"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
