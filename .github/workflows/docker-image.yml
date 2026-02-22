@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Build/FFmpeg-NodeJS-VAAPI/Dockerfile --tag ffmpeg-nodejs-vaapi:$(date +%s)
+      run: docker build Build/FFmpeg-NodeJS-VAAPI/ --file Build/FFmpeg-NodeJS-VAAPI/Dockerfile --tag ffmpeg-nodejs-vaapi:$(date +%s)
